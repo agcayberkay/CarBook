@@ -1,5 +1,6 @@
 ﻿using CarBook.Application.Features.CQRS.Results.CarResults;
 using CarBook.Application.Interfaces;
+using CarBook.Application.Interfaces.CarInterfaces;
 using CarBook.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,21 +10,23 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
 {
-    public class GetCarQueryHandler
+    public class GetCarWithBrandQueryHandler
     {
-        private readonly IRepository<Car> _repository;
-        public GetCarQueryHandler(IRepository<Car> repository)
+        private readonly ICarRepository _repository;
+
+        public GetCarWithBrandQueryHandler(ICarRepository repository)
         {
             _repository = repository;
-        }
+        }  
 
-        public async Task<List<GetCarQueryResult>> Handle()
+        public List<GetCarWithBrandQueryResult> Handle()
         {
-            var value = await _repository.GetAllAsync();
-            return value.Select(x => new GetCarQueryResult
+            var value = _repository.GetCarsListWithBrands();
+            return value.Select(x => new GetCarWithBrandQueryResult
             {
                 CarId = x.CarId,
                 BrandId = x.BrandId,
+                BrandName = x.Brand.Name,
                 Model = x.Model,
                 CoverImageUrl = x.CoverImageUrl,
                 BigImageUrl = x.BigImageUrl,
