@@ -3,14 +3,18 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Queries.FeatureQuery
 {
-    public class GetFeatureQuery:IRequest<List<GetFeatureQueryResult>>
+    public class GetFeatureByIdQuery : IRequest<GetFeatureByIdQueryResult>
     {
+        public int Id { get; set; }
 
+        public GetFeatureByIdQuery(int id)
+        {
+            Id = id;
+        }
     }
 }
