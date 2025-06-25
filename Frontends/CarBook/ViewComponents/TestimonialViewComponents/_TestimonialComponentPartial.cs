@@ -1,14 +1,15 @@
 ﻿using CarBook.Dto.AboutDtos;
+using CarBook.Dto.TestimonialDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace CarBook.ViewComponents.AboutViewComponents
+namespace CarBook.ViewComponents.TestimonialViewComponents
 {
-    public class _AboutComponentPartial:ViewComponent
+    public class _TestimonialComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public _AboutComponentPartial(IHttpClientFactory httpClientFactory)
+        public _TestimonialComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
@@ -16,11 +17,11 @@ namespace CarBook.ViewComponents.AboutViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:7010/api/Abouts");
-            if (response.IsSuccessStatusCode) 
-            { 
+            var response = await client.GetAsync("https://localhost:7010/api/Testimonials");
+            if (response.IsSuccessStatusCode)
+            {
                 var jsonData = await response.Content.ReadAsStringAsync();
-                var values=JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<TestimonialResultDto>>(jsonData);
                 return View(values);
             }
             return View();
