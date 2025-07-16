@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Interfaces\CarPricingInterfaces\ICarPricingRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Core\CarBook.Domain\CarBook.Domain.csproj" />
   </ItemGroup>
 
