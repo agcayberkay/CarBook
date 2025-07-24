@@ -475,7 +475,7 @@ namespace CarBook.Persistence.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("TagCloud");
+                    b.ToTable("TagClouds");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Testimonial", b =>

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    [Migration("20250721041725_tagCloudsMig")]
-    partial class tagCloudsMig
+    [Migration("20250724081156_migClods")]
+    partial class migClods
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -478,7 +478,7 @@ namespace CarBook.Persistence.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("TagCloud");
+                    b.ToTable("TagClouds");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Testimonial", b =>

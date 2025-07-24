@@ -5,13 +5,12 @@
 namespace CarBook.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class tagCloudsMig : Migration
+    public partial class migClods : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TagCloud",
+                name: "TagClouds",
                 columns: table => new
                 {
                     TagCloudId = table.Column<int>(type: "int", nullable: false)
@@ -32,7 +31,7 @@ namespace CarBook.Persistence.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_TagCloud_BlogId",
-                table: "TagCloud",
+                table: "TagClouds",
                 column: "BlogId");
         }
 
