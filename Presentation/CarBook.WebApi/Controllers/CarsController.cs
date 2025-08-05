@@ -17,7 +17,7 @@ namespace CarBook.WebApi.Controllers
         private readonly GetCarByIdQueryHandler _getCarByIdQueryHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLastFiveCarsWithBrandsQueryHandler _getLastFiveCarsWithBrandsQueryHandler;
-      
+
 
         public CarsController(CreateCarCommandHandler createCarCommandHandler,
             GetCarQueryHandler getCarQueryHandler,
@@ -35,7 +35,7 @@ namespace CarBook.WebApi.Controllers
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLastFiveCarsWithBrandsQueryHandler = getLastFiveCarsWithBrandsQueryHandler;
-           
+
         }
 
         [HttpGet]
@@ -58,7 +58,7 @@ namespace CarBook.WebApi.Controllers
             return Ok("Araç Eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCar(int id)
         {
             await _deleteCarCommandHandler.Handle(new RemoveCarCommand(id));
