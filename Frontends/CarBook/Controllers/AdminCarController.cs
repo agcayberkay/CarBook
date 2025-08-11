@@ -117,5 +117,19 @@ namespace CarBook.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCar(UpdateCarDto updateCarDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateCarDto);
+            StringContent content = new StringContent(jsonData, System.Text.Encoding.UTF8, "application/json");
+            var response = await client.PutAsync("https://localhost:7010/api/Cars", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }
